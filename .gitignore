@@ -43,6 +43,7 @@ cover/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
+tango_with_django_project/db.sqlite3
 
 # Environments
 .env
