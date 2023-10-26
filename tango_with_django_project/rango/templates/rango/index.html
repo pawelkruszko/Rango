@@ -12,9 +12,18 @@
             <strong>{{ aboldmessage }}</strong><br />
         </div>
         <div>
-            <a href="/rango/about">About</a>
+      {% if categories %}
+            <ul>
+            {% for category in categories %}
+                <li>{{ category.name }}</li>
+            {% endfor %}
+            </ul>
+      {% else %}
+            <strong>There are on categories present.</strong>
+      {% endif %}
         </div>
         <div>
+            <a href="/rango/about">About</a>
             <img src="{% static 'images/rango.jpg' %}"
                  alt="Picture of Rango">
         </div>
