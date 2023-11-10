@@ -1,5 +1,6 @@
 from django import forms
 from rango.models import Category, Page
+import re
 
 
 class CategoryForm(forms.ModelForm):
@@ -24,3 +25,12 @@ class PageForm(forms.ModelForm):
     class Meta:
         model = Page
         exclude = ('category',)
+
+    def clean(self):
+        cleaned_data = self.cleaned_data
+        url = cleaned_data.get('url')
+        url = re.sub(r"http[s]:[\/]+", "", url)
+        if url:
+            url = f'https://{url}'
+            cleaned_data['url'] = url
+        return cleaned_data
